@@ -39,3 +39,25 @@ var currentTime = document.querySelector("#currentTime");
 var timer = document.querySelector("#startTime");
 var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
+
+//Create the Timer
+var secondsLeft = 80;
+var holdInterval = 0;
+var penalty = 5;
+var ulCreate = document.createElement("ul");
+
+timer.addEventListener("click", function () {
+  if (holdInterval === 0) {
+    holdInterval = setInterval(function () {
+      secondsLeft--;
+      currentTime.textContent = "Time Left: " + secondsLeft;
+
+      if (secondsLeft <= 0) {
+        clearInterval(holdInterval);
+        allDone();
+        currentTime.textContent = "Time's up!";
+      }
+    }, 1000);
+  }
+  render(questionList);
+});
