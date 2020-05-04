@@ -116,6 +116,7 @@ function compare(event) {
 function allDone() {
   questionsDiv.innerHTML = "";
   currentTime.innerHTML = "";
+
   var createH1 = document.createElement("h1");
   createH1.setAttribute("id", "createH1");
   createH1.textContent = "All Done!";
@@ -127,10 +128,8 @@ function allDone() {
 
   questionsDiv.appendChild(createP);
 
-
-  //stoping the timer and using that as a score
-
-    if (secondsLeft >= 0) {
+  // Stops timer and uses the number as a score
+  if (secondsLeft >= 0) {
     var timeRemaining = secondsLeft;
     var createP2 = document.createElement("p");
     clearInterval(holdInterval);
@@ -138,3 +137,49 @@ function allDone() {
 
     questionsDiv.appendChild(createP2);
   }
+
+  var createLabel = document.createElement("label");
+  createLabel.setAttribute("id", "createLabel");
+  createLabel.textContent = "Enter your initials: ";
+
+  questionsDiv.appendChild(createLabel);
+
+  var createInput = document.createElement("input");
+  createInput.setAttribute("type", "text");
+  createInput.setAttribute("id", "initials");
+  createInput.textContent = "";
+
+  questionsDiv.appendChild(createInput);
+
+  var createSubmit = document.createElement("button");
+  createSubmit.setAttribute("type", "submit");
+  createSubmit.setAttribute("id", "Submit");
+  createSubmit.textContent = "Submit";
+
+  questionsDiv.appendChild(createSubmit);
+
+  // Local Storage
+  createSubmit.addEventListener("click", function () {
+    var initials = createInput.value;
+
+    if (initials === null) {
+      console.log("No value entered!");
+    } else {
+      var finalScore = {
+        initials: initials,
+        score: timeRemaining,
+      };
+      console.log(finalScore);
+      var allScores = localStorage.getItem("allScores");
+      if (allScores === null) {
+        allScores = [];
+      } else {
+        allScores = JSON.parse(allScores);
+      }
+      allScores.push(finalScore);
+      var newScore = JSON.stringify(allScores);
+      localStorage.setItem("allScores", newScore);
+      window.location.replace("highScores.html");
+    }
+  });
+}
