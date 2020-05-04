@@ -41,7 +41,7 @@ var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
 
 //Create the Timer
-var secondsLeft = 80;
+var secondsLeft = 60;
 var holdInterval = 0;
 var penalty = 5;
 var ulCreate = document.createElement("ul");
@@ -127,3 +127,33 @@ function allDone() {
 
   questionsDiv.appendChild(createP);
 }
+
+// Need to stop the timer and use that as a score
+if (secondsLeft >= 0) {
+  var timeRemaining = secondsLeft;
+  var createP2 = document.createElement("p");
+  clearInterval(holdInterval);
+  createP.textContent = "Your final score is: " + timeRemaining;
+
+  questionsDiv.appendChild(createP2);
+}
+
+var createLabel = document.createElement("label");
+createLabel.setAttribute("id", "createLabel");
+createLabel.textContent = "Enter your initials: ";
+
+questionsDiv.appendChild(createLabel);
+
+var createInput = document.createElement("input");
+createInput.setAttribute("type", "text");
+createInput.setAttribute("id", "initials");
+createInput.textContent = "";
+
+questionsDiv.appendChild(createInput);
+
+var createSubmit = document.createElement("button");
+createSubmit.setAttribute("type", "submit");
+createSubmit.setAttribute("id", "Submit");
+createSubmit.textContent = "Submit";
+
+questionsDiv.appendChild(createSubmit);
