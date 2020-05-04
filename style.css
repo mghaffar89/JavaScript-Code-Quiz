@@ -21,7 +21,7 @@ input {
 }
 
 li {
-  background-color: purple;
+  background-color: dodgerblue;
   margin-top: 10px;
   padding: 5px 15px;
   width: 80%;
@@ -82,7 +82,7 @@ li {
 }
 
 #Submit {
-  background-color: purple;
+  background-color: dodgerblue;
   margin-left: 33%;
   padding: 15px 32px;
   font-size: 20px;
