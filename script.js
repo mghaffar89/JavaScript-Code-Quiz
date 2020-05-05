@@ -123,19 +123,14 @@ function allDone() {
 
   questionsDiv.appendChild(createH1);
 
-  var createP = document.createElement("p");
-  createP.setAttribute("id", "createP");
-
-  questionsDiv.appendChild(createP);
-
   // Stops timer and uses the number as a score
   if (secondsLeft >= 0) {
     var timeRemaining = secondsLeft;
-    var createP2 = document.createElement("p");
+    var createP = document.createElement("p");
     clearInterval(holdInterval);
     createP.textContent = "Your final score is: " + timeRemaining;
 
-    questionsDiv.appendChild(createP2);
+    questionsDiv.appendChild(createP);
   }
 
   var createLabel = document.createElement("label");
