@@ -40,7 +40,7 @@ var timer = document.querySelector("#startTime");
 var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
 
-//Create the Timer
+//Creating the Timer
 var secondsLeft = 60;
 var holdInterval = 0;
 var penalty = 5;
@@ -158,7 +158,7 @@ function allDone() {
     var initials = createInput.value;
 
     if (initials === null) {
-      console.log("No value entered!");
+      alert("No value entered!");
     } else {
       var finalScore = {
         initials: initials,
